@@ -27,12 +27,6 @@ Desktop Slash 不是窗口里的游戏。启动后，它会在桌面上铺一层
 
 退出时会自动恢复桌面图标——不管是正常退出、异常崩溃，还是看门狗兜底。游戏不会移动、删除或重命名任何桌面文件。
 
-## 演示视频
-
-[![Desktop Slash 25 秒演示](docs/video/cover-16x9.png)](docs/video/deskslash-promo-16x9.mp4)
-
-<sub>25 秒实机演示：真实桌面、开局倒计时、划切连击与结算。点击封面播放；竖屏版见 [9:16](docs/video/deskslash-promo-9x16.mp4)。</sub>
-
 ## 特性
 
 - **真实图标** — 通过 Windows Shell 读取 256 px 图标，而不是内置素材包
