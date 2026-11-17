@@ -1,0 +1,60 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# ---- 构建与打包产物 ----
+build/
+dist/
+*.manifest
+
+# ---- 虚拟环境 ----
+.venv/
+.venv-test/
+venv/
+env/
+
+# ---- 编辑器 / IDE ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- 日志与临时文件 ----
+*.log
+logs/
+*.tmp
+*.temp
+*~
+*.orig
+*.rej
+
+# ---- 测试产物与缓存 ----
+test_output/
+desktop_slash_self_test.txt
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- 用户本地数据（正常运行写在 %APPDATA%\DesktopSlash） ----
+save.json
+desktop_backup.json
+crash.log
+desktop_restore.log
+
+# ---- 敏感文件 ----
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+secrets.json
+
+# ---- 操作系统 ----
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,1 @@
+"""Procedural arcade sound effects."""
