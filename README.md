@@ -10,7 +10,14 @@
 ![python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![pygame](https://img.shields.io/badge/pygame-2.6-4B8BBE)
 
+[![下载 DesktopSlash.exe](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-DesktopSlash.exe-2ea043?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/oioonooio/DeskSlash/releases/latest/download/DesktopSlash.exe)
+[![最新版本](https://img.shields.io/github/v/release/oioonooio/DeskSlash?style=for-the-badge&color=0078D6&label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/oioonooio/DeskSlash/releases/latest)
+
+**不用装 Python，不用配环境：下载单个 EXE，双击就能玩。**
+
 <img src="docs/images/main-menu.png" alt="Desktop Slash 主菜单" width="100%">
+
+<sub><a href="#演示视频">演示视频</a> · <a href="#下载-exe">下载 EXE</a> · <a href="#从源码运行">从源码运行</a> · <a href="#玩法">玩法</a> · <a href="#常见问题">常见问题</a></sub>
 
 </div>
 
@@ -19,6 +26,12 @@
 Desktop Slash 不是窗口里的游戏。启动后，它会在桌面上铺一层透明覆盖层，读取你**真实的桌面图标**，临时隐藏图标本体，同时保留你的壁纸和任务栏。成批图标从屏幕底部飞起，按住左键快速划动即可把它们切成两半。
 
 退出时会自动恢复桌面图标——不管是正常退出、异常崩溃，还是看门狗兜底。游戏不会移动、删除或重命名任何桌面文件。
+
+## 演示视频
+
+[![Desktop Slash 25 秒演示](docs/video/cover-16x9.png)](docs/video/deskslash-promo-16x9.mp4)
+
+<sub>25 秒实机演示：真实桌面、开局倒计时、划切连击与结算。点击封面播放；竖屏版见 [9:16](docs/video/deskslash-promo-9x16.mp4)。</sub>
 
 ## 特性
 
@@ -51,15 +64,32 @@ Desktop Slash 不是窗口里的游戏。启动后，它会在桌面上铺一层
   </tr>
 </table>
 
-## 环境要求
+## 快速开始
+
+### 下载 EXE
+
+推荐方式：不用配置任何环境。
+
+| 项目 | 说明 |
+| --- | --- |
+| 下载 | [DesktopSlash.exe](https://github.com/oioonooio/DeskSlash/releases/latest/download/DesktopSlash.exe)（约 23 MB，最新版 [1.0.0](https://github.com/oioonooio/DeskSlash/releases/latest)） |
+| 运行 | 双击 EXE，主菜单选「开始游戏」，3-2-1 倒计时后进入桌面 |
+| 需要 | 无。不需要 Python、pip 或任何第三方库 |
+| 卸载 | 删除 EXE 即可；如需清空存档，再删除 `%APPDATA%\DesktopSlash\` |
+
+首次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点 **更多信息 → 仍要运行** 即可。EXE 未做代码签名，部分杀毒软件可能对 PyInstaller 单文件误报，添加信任即可。
+
+系统要求：Windows 10 / 11 x64。存档、设置与日志都写在 `%APPDATA%\DesktopSlash\`，不会写入程序目录。
+
+## 从源码运行
+
+适合开发、调试或二次修改，需要 Python 3.11+：
 
 | 项目 | 要求 |
 | --- | --- |
 | 系统 | Windows 10 / 11，x64 |
 | Python | 3.11 或更高（开发与验证使用 3.11.2） |
 | 依赖 | pygame 2.6.x、Pillow 10+、pywin32 |
-
-## 快速开始
 
 ```bash
 git clone https://github.com/oioonooio/DeskSlash.git
@@ -131,6 +161,7 @@ DesktopSlash/
 ├─ audio/                  # 代码合成音效
 ├─ assets/                 # 图标资源
 ├─ docs/images/            # README 截图
+├─ docs/video/             # 演示视频与封面
 ├─ test_*.py               # 自动化与实机测试
 └─ DesktopSlash.spec       # PyInstaller 打包配置
 ```
@@ -176,6 +207,24 @@ build_exe.bat
 - 仅支持 Windows 10 / 11 x64。
 - 部分 UWP / 商店应用不提供 Shell 图标，会使用内置回退图标。
 - 游戏运行期间桌面图标不可见；请勿用任务管理器强杀进程，正常退出或紧急退出会恢复桌面。
+
+## 常见问题
+
+**EXE 需要先安装 Python 吗？**
+
+不需要。EXE 已经把 Python 解释器和依赖一起打包，系统只需要 Windows 10 / 11 x64。
+
+**双击后提示「Windows 已保护你的电脑」或被杀毒软件拦截？**
+
+EXE 没有代码签名，SmartScreen 会拦截：点「更多信息 → 仍要运行」。PyInstaller 单文件偶尔会被误报，添加信任即可。
+
+**退出后桌面图标没回来？**
+
+正常退出、`Esc` 菜单退出和 `Ctrl + Shift + Q` 紧急退出都会恢复图标；程序崩溃时由看门狗子进程兜底。请避免从任务管理器强杀进程。
+
+**会读取或上传我的桌面内容吗？**
+
+游戏只在本地读取桌面图标图像来生成游戏对象，不联网、不上传任何文件；存档与日志都保存在 `%APPDATA%\DesktopSlash\`。
 
 ## 许可证
 
